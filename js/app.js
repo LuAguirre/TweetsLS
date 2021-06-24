@@ -26,10 +26,11 @@ function agregarTweet(e) {
      e.preventDefault();
 
      const tweet = document.getElementById('tweet').value;
-     alert("Un nuevo tweet ha sido agregado")
-     
-
-     if(tweet === '') {
+     //
+     if(tweet !== ''){
+          alert("Un nuevo tweet ha sido agregado")
+     } 
+     else if(tweet === '') {
           mostrarError('Un mensaje no puede ir vacio');
           return;
      }
@@ -58,7 +59,8 @@ function mostrarError(error) {
      const contenido = document.getElementById('contenido');
      contenido.appendChild(mensajeEerror);
 
-     setTimeout(() => {
+     //
+     setTimeout(function() {
           mensajeEerror.remove();
      }, 3000);
 }
@@ -102,8 +104,8 @@ function borrarTweet(e) {
      tweets = tweets.filter( tweet => tweet.id != id  );
      crearHTML();
 }
-
-function sincronizarStorage() {
+//
+const sincronizarStorage = function() {
      localStorage.setItem('tweets', JSON.stringify(tweets));
 }
 
